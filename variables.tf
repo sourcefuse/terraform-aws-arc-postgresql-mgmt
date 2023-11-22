@@ -53,35 +53,3 @@ variable "pg_ssm_parameters" {
     value = string
   }))
 }
-
-variable "database" {
-  type        = string
-  description = "Name of the database"
-  default     = "postgres"
-}
-
-variable "sslmode" {
-  type        = string
-  description = "sslmode of the database"
-  default     = "require"
-}
-
-variable "connect_timeout" {
-  type        = number
-  description = "connection timeout of the database"
-}
-
-variable "ssm_parameter_db_password" {
-  type        = string
-  description = "SSM parameter name to fetch db password"
-}
-
-variable "ssm_parameter_db_username" {
-  type        = string
-  description = "SSM parameter to fetch db user name"
-}
-
-variable "db_instance_identifier" {
-  type        = string
-  description = "DB instance identifier of RDS"
-}

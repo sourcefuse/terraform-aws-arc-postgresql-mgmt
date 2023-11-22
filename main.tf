@@ -1,33 +1,3 @@
-terraform {
-  required_version = "~> 1.4"
-
-  required_providers {
-    postgresql = {
-      version = "~> 1.21"
-      source  = "cyrilgdn/postgresql"
-    }
-    aws = {
-      version = "~> 5.0"
-      source  = "hashicorp/aws"
-    }
-  }
-
-  backend "s3" {}
-}
-
-provider "aws" {
-  region = var.region
-}
-
-provider "postgresql" {
-  host            = data.aws_db_instance.db_instance.address
-  port            = data.aws_db_instance.db_instance.port
-  database        = var.database
-  username        = data.aws_ssm_parameter.db_username.value
-  password        = data.aws_ssm_parameter.db_password.value
-  sslmode         = var.sslmode
-  connect_timeout = var.connect_timeout
-}
 
 resource "postgresql_role" "pg_role" {
   for_each = var.pg_roles
