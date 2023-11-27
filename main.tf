@@ -1,3 +1,17 @@
+terraform {
+  required_version = "~> 1.4"
+
+  required_providers {
+    postgresql = {
+      version = "~> 1.21"
+      source  = "cyrilgdn/postgresql"
+    }
+    aws = {
+      version = "~> 5.0"
+      source  = "hashicorp/aws"
+    }
+  }
+}
 
 resource "postgresql_role" "pg_role" {
   for_each = var.pg_roles
@@ -19,7 +33,7 @@ resource "postgresql_database" "pg_db" {
   ]
 }
 
-resource "postgresql_default_privileges" "default_privileges" {
+resource "postgresql_default_privileges" "pg_default_privileges" {
   for_each    = var.postgresql_default_privileges
   role        = each.value.role
   database    = each.value.database

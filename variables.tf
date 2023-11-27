@@ -1,8 +1,8 @@
 variable "pg_roles" {
   type = map(object({
-    name     = string
-    login    = string
-    password = string
+    postgres_role_name = string
+    login              = string
+    password           = string
   }))
 }
 
@@ -48,8 +48,8 @@ variable "postgresql_schema" {
 
 variable "pg_ssm_parameters" {
   type = map(object({
-    name  = string
-    type  = string
-    value = string
+    name     = string
+    type     = string
+    password = string
   }))
 }
