@@ -4,6 +4,7 @@ variable "pg_roles" {
     login              = string
     password           = string
   }))
+  description = "configuration block for postgresql roles"
 }
 
 variable "postgresql_database" {
@@ -52,4 +53,5 @@ variable "pg_ssm_parameters" {
     type     = string
     password = string
   }))
+  description = "postgresql SSM parameters"
 }
