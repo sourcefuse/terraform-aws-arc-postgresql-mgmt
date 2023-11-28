@@ -135,12 +135,11 @@ module "postgresql" {
   postgresql_database           = var.pg_db
   postgresql_default_privileges = var.pg_previleges
   postgresql_schema             = var.pg_schema
-  postgresql_random_passwords   = local.pg_random_passwords
   pg_ssm_parameters             = local.pg_ssm_parameters
 }
 
 2. In the `variables.tf`, define all the required variables that are shared like project name, region, environment.
-   And then define the provider variables and the postgresql database, pg_schema , and previleges
+   And then define the provider variables and the postgresql database, SSM parameter variables that we define in locals and pg_schema , and previleges
 
 3. In `locals.tf`, this is how you pass the values
 locals {
@@ -150,17 +149,17 @@ locals {
 
   env_pg_roles = {
     dev = {
-      "pg_roles" = {
-        postgres_role_name = ""
+      "test" = {
+        postgres_role_name = "test"
         login              = true
-        password           = resource.random_password.password["test/pg_service_account_password"].result
+        password           = resource.random_password.password["example_random_password"].result
       }
     }
   }
 
   env_pg_random_passwords = {
     dev = {
-      "pg_random_passwords" = {
+      "example_random_password" = {
         length        = ""
         special       = true
         special_lower = ""
@@ -170,10 +169,10 @@ locals {
 
   env_pg_ssm_parameters = {
     dev = {
-      "pg_ssm_parameters" = {
-        name     = ""
+      "example1" = {
+        name     = "example1"
         type     = ""
-        password = resource.random_password.password["test/pg_service_account_password"].result
+        password = resource.random_password.password["example_random_password"].result
       }
     }
   }
@@ -193,7 +192,7 @@ ssm_parameter_db_password = ""
 
 pg_db = {
   "test" = {
-    db_name           = ""
+    db_name           = "test"
     db_owner          = ""
     template          = ""
     lc_collate        = ""
@@ -204,7 +203,7 @@ pg_db = {
 
 pg_previleges = {
   "test" = {
-    role        = ""
+    role        = "test"
     database    = ""
     schema      = ""
     owner       = ""
