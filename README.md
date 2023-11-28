@@ -91,7 +91,7 @@ No modules.
 This is the upstream repo for postgresql. When you want to use this and call it in downstream, below are the steps to do the following
 
 1. In the `main.tf`
-   terraform {
+terraform {
   required_version = "~> 1.4"
 
   required_providers {
@@ -129,112 +129,107 @@ resource "random_password" "password" {
   special  = each.value.special
 }
 
- module "postgresql" {
-   source = "git::https://github.com/sourcefuse/terraform-postgresql-arc-mgmt.git"
-   pg_roles                      = local.pg_roles
-   postgresql_database           = var.pg_db
-   postgresql_default_privileges = var.pg_previleges
-   postgresql_schema             = var.pg_schema
-   postgresql_random_passwords   = local.pg_random_passwords
-   pg_ssm_parameters             = local.pg_ssm_parameters
-
+module "postgresql" {
+  source = "git::https://github.com/sourcefuse/terraform-postgresql-arc-mgmt.git"
+  pg_roles                      = local.pg_roles
+  postgresql_database           = var.pg_db
+  postgresql_default_privileges = var.pg_previleges
+  postgresql_schema             = var.pg_schema
+  postgresql_random_passwords   = local.pg_random_passwords
+  pg_ssm_parameters             = local.pg_ssm_parameters
 }
 
 2. In the `variables.tf`, define all the required variables that are shared like project name, region, environment.
    And then define the provider variables and the postgresql database, pg_schema , and previleges
 
 3. In `locals.tf`, this is how you pass the values
+locals {
+  pg_roles            = local.env_pg_roles[var.environment]
+  pg_ssm_parameters   = local.env_pg_ssm_parameters[var.environment]
+  pg_random_passwords = local.env_pg_random_passwords[var.environment]
 
-   locals {
-
-      pg_roles            = local.env_pg_roles[var.environment]
-      pg_ssm_parameters   = local.env_pg_ssm_parameters[var.environment]
-      pg_random_passwords = local.env_pg_random_passwords[var.environment]
-
-      env_pg_roles = {
-        dev = {
-          "pg_roles" = {
-             postgres_role_name = ""
-             login              = true
-             password           = resource.random_password.password["test/pg_service_account_password"].result
-       }
-     }
-   }
-
-      env_pg_random_passwords = {
-       dev = {
-         "pg_random_passwords" = {
-            length        = ""
-            special       = true
-            special_lower = ""
+  env_pg_roles = {
+    dev = {
+      "pg_roles" = {
+        postgres_role_name = ""
+        login              = true
+        password           = resource.random_password.password["test/pg_service_account_password"].result
       }
     }
   }
 
-      env_pg_ssm_parameters = {
-        dev = {
-          "pg_ssm_parameters" = {
-             name     = ""
-             type     = ""
-             password = resource.random_password.password["test/pg_service_account_password"].result
-       }
-     }
-   }
+  env_pg_random_passwords = {
+    dev = {
+      "pg_random_passwords" = {
+        length        = ""
+        special       = true
+        special_lower = ""
+      }
+    }
+  }
+
+  env_pg_ssm_parameters = {
+    dev = {
+      "pg_ssm_parameters" = {
+        name     = ""
+        type     = ""
+        password = resource.random_password.password["test/pg_service_account_password"].result
+      }
+    }
+  }
 }
 
 4. In `dev.tfvars`, we will need to pass in the values like
-   region        = ""
-   bucket_name   = ""
-   dynamodb_name = ""
-   project_name  = ""
-   environment   = ""
+region        = ""
+bucket_name   = ""
+dynamodb_name = ""
+project_name  = ""
+environment   = ""
 
-  ssm_parameter_db_username = ""
-  ssm_parameter_db_username = ""
-  connect_timeout           = 
-  ssm_parameter_db_password = ""
+ssm_parameter_db_username = ""
+ssm_parameter_db_username = ""
+connect_timeout           = 
+ssm_parameter_db_password = ""
 
-##################### test ####################
-  pg_db = {
-    "test" = {
-     db_name           = ""
-     db_owner          = ""
-     template          = ""
-     lc_collate        = ""
-     connection_limit  = -1
-     allow_connections = true
-   }
- }
+pg_db = {
+  "test" = {
+    db_name           = ""
+    db_owner          = ""
+    template          = ""
+    lc_collate        = ""
+    connection_limit  = -1
+    allow_connections = true
+  }
+}
 
-  pg_previleges = {
-   "test" = {
-     role        = ""
-     database    = ""
-     schema      = ""
-     owner       = ""
-     object_type = "table"
-     privileges  = []
-   }
- }
+pg_previleges = {
+  "test" = {
+    role        = ""
+    database    = ""
+    schema      = ""
+    owner       = ""
+    object_type = "table"
+    privileges  = []
+  }
+}
 
-  pg_schema = {
-   "test" = {
-     schema_name = ""
-   }
- }
+pg_schema = {
+  "test" = {
+    schema_name = ""
+  }
+}
 
 5. In the `data.tf`, you will need to pas in the values like
-   
-   data "aws_ssm_parameter" "db_password" {
-    name = var.ssm_parameter_db_password
+data "aws_ssm_parameter" "db_password" {
+  name = var.ssm_parameter_db_password
 }
 
-   data "aws_ssm_parameter" "db_username" {
-    name = var.ssm_parameter_db_username
+data "aws_ssm_parameter" "db_username" {
+  name = var.ssm_parameter_db_username
 }
 
-   data "aws_ssm_parameter" "db_endpoint" {
-    name = var.ssm_parameter_db_endpoint
+data "aws_ssm_parameter" "db_endpoint" {
+  name = var.ssm_parameter_db_endpoint
 }
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
