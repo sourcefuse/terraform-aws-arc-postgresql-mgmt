@@ -4,7 +4,7 @@ variable "pg_roles" {
     login              = string
     password           = string
   }))
-  description = "configuration block for postgresql roles"
+  description = "A map of objects where each key-value pair represents a PostgreSQL role"
 }
 
 variable "postgresql_database" {
@@ -16,7 +16,7 @@ variable "postgresql_database" {
     connection_limit  = optional(string, null)
     allow_connections = optional(string, null)
   }))
-  description = "configuration block for postgresql database"
+  description = "A map where each key-value pair represents a PostgreSQL database configuration"
 }
 
 variable "postgresql_default_privileges" {
