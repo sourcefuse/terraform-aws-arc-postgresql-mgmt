@@ -91,3 +91,8 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | ARN of the parameter |
+
+## Versioning
+This project uses a .version file at the root of the repo which the pipeline reads from and does a git tag.
+
+When you intend to commit to main, you will need to increment this version. Once the project is merged, the pipeline will kick off and tag the latest git commit.
