@@ -10,9 +10,13 @@ terraform {
       version = "~> 5.0"
       source  = "hashicorp/aws"
     }
+    random = {
+      version = "~> 3.0"
+      source  = "hashicorp/random"
+    }
   }
 
-  backend "s3" {}
+  #backend "s3" {}
 }
 
 provider "aws" {
@@ -21,7 +25,7 @@ provider "aws" {
 
 provider "postgresql" {
   host            = data.aws_ssm_parameter.db_endpoint.value
-  port            = data.aws_db_instance.db_instance.port
+  port            = var.port
   database        = var.database
   superuser       = var.superuser
   username        = data.aws_ssm_parameter.db_username.value
@@ -37,7 +41,8 @@ resource "random_password" "password" {
 }
 
 module "postgresql" {
-  source                        = "git::https://github.com/sourcefuse/terraform-postgresql-arc-mgmt.git"
+  source                        = "sourcefuse/arc-postgresql-mgmt/aws"
+  version                       = "0.0.3"
   pg_roles                      = local.pg_roles
   postgresql_database           = var.pg_db
   postgresql_default_privileges = var.pg_previleges
