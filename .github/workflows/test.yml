@@ -31,4 +31,9 @@ jobs:
       - name: Run tflint
         run: tflint -f compact
 
-
+  checkov:
+    runs-on:
+      - arc
+    name: checkov
+    steps:
+      - uses: actions/checkout@master
