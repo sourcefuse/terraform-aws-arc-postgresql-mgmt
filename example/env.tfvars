@@ -6,7 +6,7 @@ namespace     = "example"
 environment   = "env"
 
 ssm_parameter_db_username = "example"
-connect_timeout           = "15s"
+connect_timeout           = 15
 ssm_parameter_db_password = "example"
 
 pg_db = {
