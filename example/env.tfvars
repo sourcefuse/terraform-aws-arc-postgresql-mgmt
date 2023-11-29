@@ -6,7 +6,7 @@ environment   = ""
 
 ssm_parameter_db_username = ""
 ssm_parameter_db_username = ""
-connect_timeout           = 
+connect_timeout           =
 ssm_parameter_db_password = ""
 
 pg_db = {

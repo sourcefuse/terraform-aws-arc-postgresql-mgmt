@@ -109,4 +109,3 @@ variable "pg_schema" {
   }))
   description = "configuration block for postgresql schema"
 }
-
