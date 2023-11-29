@@ -21,7 +21,7 @@ provider "aws" {
 
 provider "postgresql" {
   host            = data.aws_ssm_parameter.db_endpoint.value
-  port            = data.aws_db_instance.db_instance.port
+  port            = var.port
   database        = var.database
   superuser       = var.superuser
   username        = data.aws_ssm_parameter.db_username.value

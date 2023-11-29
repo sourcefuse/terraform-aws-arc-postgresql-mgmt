@@ -18,14 +18,6 @@ variable "environment" {
   description = "ID element. Usually used for region e.g. 'uw2', 'us-west-2', OR role 'prod', 'staging', 'dev', 'UAT'"
 }
 
-# variable "random_password" {
-#   type = map(object({
-#     length  = string
-#     special = bool
-#   }))
-#   description = "To generate random password for DB role"
-# }
-
 variable "database" {
   type        = string
   description = "Name of the database"

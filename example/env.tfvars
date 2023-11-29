@@ -1,20 +1,20 @@
-region        = ""
-bucket_name   = ""
-dynamodb_name = ""
-project_name  = ""
-environment   = ""
+region        = "us-east-1"
+bucket_name   = "test"
+dynamodb_name = "test"
+project_name  = "example"
+namespace     = "example"
+environment   = "env"
 
-ssm_parameter_db_username = ""
-ssm_parameter_db_username = ""
-connect_timeout           =
-ssm_parameter_db_password = ""
+ssm_parameter_db_username = "example"
+connect_timeout           = "15s"
+ssm_parameter_db_password = "example"
 
 pg_db = {
   "test" = {
     db_name           = "test"
-    db_owner          = ""
-    template          = ""
-    lc_collate        = ""
+    db_owner          = "example"
+    template          = "template0"
+    lc_collate        = "C"
     connection_limit  = -1
     allow_connections = true
   }
@@ -23,9 +23,9 @@ pg_db = {
 pg_previleges = {
   "test" = {
     role        = "test"
-    database    = ""
-    schema      = ""
-    owner       = ""
+    database    = "example"
+    schema      = "example"
+    owner       = "example"
     object_type = "table"
     privileges  = []
   }
@@ -33,6 +33,6 @@ pg_previleges = {
 
 pg_schema = {
   "test" = {
-    schema_name = ""
+    schema_name = "test"
   }
 }
