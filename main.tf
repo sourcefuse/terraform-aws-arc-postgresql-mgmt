@@ -76,4 +76,3 @@ resource "aws_ssm_parameter" "this" {
   type     = each.value.type
   value    = each.value.password
 }
-

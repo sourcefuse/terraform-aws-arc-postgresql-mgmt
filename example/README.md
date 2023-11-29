@@ -29,20 +29,3 @@ required_providers {
   ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.4 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
-| <a name="requirement_postgresql"></a> [postgresql](#requirement\_postgresql) | ~> 1.21 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.24.0 |
-| <a name="provider_postgresql"></a> [postgresql](#provider\_postgresql) | 1.21.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
-
-
