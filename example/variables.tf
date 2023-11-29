@@ -1,16 +1,6 @@
-variable "project_name" {
-  type        = string
-  description = "Name of the project."
-}
-
 variable "region" {
   type        = string
   description = "AWS region"
-}
-
-variable "namespace" {
-  type        = string
-  description = "Namespace for the resources."
 }
 
 variable "environment" {

@@ -1,13 +1,12 @@
 region        = "us-east-1"
 bucket_name   = "test"
 dynamodb_name = "test"
-project_name  = "example"
-namespace     = "example"
-environment   = "env"
+environment   = "dev"
 
 ssm_parameter_db_username = "example"
 connect_timeout           = 15
 ssm_parameter_db_password = "example"
+ssm_parameter_db_endpoint = "example"
 
 pg_db = {
   "test" = {
