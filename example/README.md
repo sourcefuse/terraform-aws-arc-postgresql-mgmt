@@ -1,10 +1,6 @@
-# Reference Architecture DevOps Infrastructure: postgresql  
-
 ## Overview
 
 It demonstrates how to create and manage a PostgreSQL database, roles, schemas, and associated resources on AWS.
-
-
 
 ## Usage
   ```
