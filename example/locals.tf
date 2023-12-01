@@ -5,8 +5,8 @@ locals {
 
   env_pg_roles = {
     dev = {
-      "test" = {
-        postgres_role_name = "test"
+      "example_role" = {
+        postgres_role_name = "example_role"
         login              = true
         password           = resource.random_password.password["example_random_password"].result
       }
