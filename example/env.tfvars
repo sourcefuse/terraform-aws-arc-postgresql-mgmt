@@ -3,15 +3,15 @@ bucket_name   = "test"
 dynamodb_name = "test"
 environment   = "dev"
 
-ssm_parameter_db_username = "example"
+ssm_parameter_db_username = "/HIS-WL/DEV/aurora/cluster_admin_db_username"
 connect_timeout           = 15
-ssm_parameter_db_password = "example"
-ssm_parameter_db_endpoint = "example"
+ssm_parameter_db_password = "/HIS-WL/DEV/aurora/cluster_admin_db_password"
+ssm_parameter_db_endpoint = "/HIS-WL/DEV/aurora/cluster_endpoint"
 
 pg_db = {
-  "test" = {
-    db_name           = "test"
-    db_owner          = "example"
+  "example_db" = {
+    db_name           = "example_db"
+    db_owner          = "example_role"
     template          = "template0"
     lc_collate        = "C"
     connection_limit  = -1
@@ -21,12 +21,12 @@ pg_db = {
 
 pg_previleges = {
   "test" = {
-    role        = "test"
-    database    = "example"
-    schema      = "example"
-    owner       = "example"
+    role        = "example_role"
+    database    = "example_db"
+    schema      = "public"
+    owner       = "example_role"
     object_type = "table"
-    privileges  = []
+    privileges  = ["ALL"]
   }
 }
 
