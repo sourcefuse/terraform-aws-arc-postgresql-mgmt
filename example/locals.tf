@@ -5,8 +5,8 @@ locals {
 
   env_pg_roles = {
     dev = {
-      "test" = {
-        postgres_role_name = "test"
+      "example_role" = {
+        postgres_role_name = "example_role"
         login              = true
         password           = resource.random_password.password["example_random_password"].result
       }
@@ -16,9 +16,9 @@ locals {
   env_pg_random_passwords = {
     dev = {
       "example_random_password" = {
-        length        = ""
+        length        = "32"
         special       = true
-        special_lower = ""
+        special_lower = "@#$"
       }
     }
   }
@@ -27,7 +27,7 @@ locals {
     dev = {
       "example1" = {
         name     = "example1"
-        type     = ""
+        type     = "SecureString"
         password = resource.random_password.password["example_random_password"].result
       }
     }

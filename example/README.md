@@ -1,3 +1,7 @@
+# [terraform-postgresql-aws-arc-mgmt](https://github.com/sourcefuse/terraform-postgresql-aws-arc-mgmt)
+
+[![snyk](https://github.com/sourcefuse/terraform-postgresql-aws-arc-mgmt/actions/workflows/snyk.yaml/badge.svg)](https://github.com/sourcefuse/terraform-postgresql-aws-arc-mgmt/actions/workflows/snyk.yaml)
+
 ## Overview
 
 It demonstrates how to create and manage a PostgreSQL database, roles, schemas, and associated resources on AWS.
@@ -12,6 +16,10 @@ required_providers {
     aws = {
       version = "~> 5.0"
       source  = "hashicorp/aws"
+    }
+    random = {
+      version = "~> 3.0"
+      source  = "hashicorp/random"
     }
   }
   ```
@@ -36,6 +44,7 @@ required_providers {
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.4 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 | <a name="requirement_postgresql"></a> [postgresql](#requirement\_postgresql) | ~> 1.21 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.0 |
 
 ## Providers
 
@@ -49,6 +58,8 @@ required_providers {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_postgresql"></a> [postgresql](#module\_postgresql) | git::https://github.com/sourcefuse/terraform-postgresql-arc-mgmt.git | n/a |
+| <a name="module_postgresql"></a> [postgresql](#module\_postgresql) | sourcefuse/arc-postgresql-mgmt/aws | 0.0.3 |
+
 
 ## Resources
 
