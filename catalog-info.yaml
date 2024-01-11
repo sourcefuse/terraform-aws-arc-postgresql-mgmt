@@ -4,7 +4,7 @@ kind: Component
 metadata:
   name: terraform-postgresql-aws-arc-mgmt
   namespace: arc
-  description: Terraform Module to create and manage a PostgreSQL database, roles, schemas, and associated resources on AWS.
+  description: Terraform Module to create and manage a PostgreSQL database, roles and Schemas
   annotations:
     snyk.io/org-id: 04111b7b-2ba8-404b-8a16-42a04448794d
     github.com/project-slug: sourcefuse/terraform-postgresql-aws-arc-mgmt
@@ -15,7 +15,7 @@ metadata:
       icon: dashboard
     - url: https://sourcefuse.github.io/arc-docs/arc-iac-docs/modules/terraform-postgresql-aws-arc-mgmt/
       title: ARC Postgres management Docs
-      icon: dashboard  
+      icon: dashboard
 spec:
   type: service
   owner: sourcefuse
